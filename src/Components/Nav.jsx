@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { NavLink,withRouter } from 'react-router-dom';
 
 
 
@@ -7,37 +7,39 @@ import React, { Component } from 'react';
 
 class Nav extends Component {
     render() {
-        console.log('nav');
+        console.log(this.props.location.pathname);
         return (
-            <div className="panel panel-left panel-reveal">
+
+
+            <div className= { this.props.show == true ? "panel panel-left panel-reveal " + 'active' : "panel panel-left panel-reveal" }>
 
                 <div className="swiper-container-subnav multinav">
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <nav className="main_nav_underline">
                                 <ul>
-                                    <li><a href="/"><img src={ require("../Assets/images/icons/gray/home.png")} alt="" title="" /><span>Home</span></a></li>
-                                    <li><a href="about.html"><img src={ require("../Assets/images/icons/gray/mobile.png")} alt="" title="" /><span>About</span></a></li>
-                                    <li><a href="features.html"><img src={ require("../Assets/images/icons/gray/features.png")} alt="" title="" /><span>Features</span></a></li>
-                                    <li><a href="#" data-popup=".popup-login" className="open-popup"><img src={ require("../Assets/images/icons/gray/lock.png")} alt="" title="" /><span>Login</span></a></li>
-                                    <li><a href="team.html"><img src={ require("../Assets/images/icons/gray/users.png")} alt="" title="" /><span>Team</span></a></li>
-                                    <li><a href="blog.html"><img src={ require("../Assets/images/icons/gray/blog.png")} alt="" title="" /><span>Blog</span></a></li>
+                                    <li><NavLink to="/" exact activeClassName="active" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/home.png")} alt="" title="" /><span>Home</span></NavLink></li>
+                                    <li><NavLink to="/about"  activeClassName="active" exact onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/mobile.png")} alt="" title="" /><span>About</span></NavLink></li>
+                                    <li><NavLink activeClassName="active" to="/features" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/features.png")} alt="" title="" /><span>Features</span></NavLink ></li>
+                                    <li><NavLink  to="#" data-popup=".popup-login" className="open-popup" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/lock.png")} alt="" title="" /><span>Login</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/team" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/users.png")} alt="" title="" /><span>Team</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/blog" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/blog.png")} alt="" title="" /><span>Blog</span></NavLink ></li>
 
-                                    <li><a href="photos.html"><img src={ require("../Assets/images/icons/gray/photos.png")} alt="" title="" /><span>Photos</span></a></li>
-                                    <li><a href="videos.html"><img src={ require("../Assets/images/icons/gray/video.png")} alt="" title="" /><span>Videos</span></a></li>
-                                    <li><a href="music.html"><img src={ require("../Assets/images/icons/gray/music.png")} alt="" title="" /><span>Music</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/photos" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/photos.png")} alt="" title="" /><span>Photos</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/videos" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/video.png")} alt="" title="" /><span>Videos</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/music" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/music.png")} alt="" title="" /><span>Music</span></NavLink ></li>
 
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/shop.png")} alt="" title="" /><span>Shop</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/shop" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/shop.png")} alt="" title="" /><span>Shop</span></NavLink ></li>
                                     <li className="subnav opensubnav"><img src={ require("../Assets/images/icons/gray/categories.png")} alt="" title="" /><span>Sub level menu</span></li>
-                                    <li><a href="cart.html"><img src={ require("../Assets/images/icons/gray/cart.png")} alt="" title="" /><span>Cart</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/cart" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/cart.png")} alt="" title="" /><span>Cart</span></NavLink ></li>
 
-                                    <li><a href="tables.html"><img src={ require("../Assets/images/icons/gray/tables.png")} alt="" title="" /><span>Tables</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/tables" onClick={this.props.handler}><img src={ require("../Assets/images/icons/gray/tables.png")} alt="" title="" /><span>Tables</span></NavLink ></li>
 
-                                    <li><a href="form.html"><img src={ require("../Assets/images/icons/gray/form.png")} alt="" title="" /><span>Custom Form</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/form" ><img src={ require("../Assets/images/icons/gray/form.png")} alt="" title="" /><span>Custom Form</span></NavLink ></li>
 
 
-                                    <li><a href="tel:012345678"><img src={ require("../Assets/images/icons/gray/phone.png")} alt="" title="" /><span>Call now!</span></a></li>
-                                    <li><a href="contact.html"><span>Contact</span></a></li>
+                                    <li><NavLink activeClassName="active" to="tel:012345678" ><img src={ require("../Assets/images/icons/gray/phone.png")} alt="" title="" /><span>Call now!</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/contact" onClick={this.props.handler}><span>Contact</span></NavLink ></li>
                                 </ul>
                             </nav>
                         </div>
@@ -46,17 +48,17 @@ class Nav extends Component {
                             <nav className="main_nav_underline">
                                 <ul>
 
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/car.png")} alt="" title="" /><span>Cars</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/bus.png")} alt="" title="" /><span>Buses</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/bike.png")} alt="" title="" /><span>Bikes</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/car.png")} alt="" title="" /><span>Cars</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/bus.png")} alt="" title="" /><span>Buses</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/bike.png")} alt="" title="" /><span>Bikes</span></NavLink ></li>
 
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/drink.png")} alt="" title="" /><span>Drinks</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/food.png")} alt="" title="" /><span>Food</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/orders.png")} alt="" title="" /><span>Clothes</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/drink.png")} alt="" title="" /><span>Drinks</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/food.png")} alt="" title="" /><span>Food</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/orders.png")} alt="" title="" /><span>Clothes</span></NavLink ></li>
 
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/rocket.png")} alt="" title="" /><span>Rockets</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/briefcase.png")} alt="" title="" /><span>Accessories</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/gift.png")} alt="" title="" /><span>Gifts</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/rocket.png")} alt="" title="" /><span>Rockets</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/briefcase.png")} alt="" title="" /><span>Accessories</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/gift.png")} alt="" title="" /><span>Gifts</span></NavLink ></li>
                                     <li className="subnav opensubsubnav"><img src={ require("../Assets/images/icons/gray/categories.png")} alt="" title="" /><span>Third sublevel menu</span></li>
                                 </ul>
                             </nav>
@@ -66,11 +68,11 @@ class Nav extends Component {
                             <nav className="main_nav_underline">
                                 <ul>
 
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/car.png")} alt="" title="" /><span>Subcategory 01</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/bus.png")} alt="" title="" /><span>Subcategory 02</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/bike.png")} alt="" title="" /><span>Subcategory 03</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/drink.png")} alt="" title="" /><span>Subcategory 04</span></a></li>
-                                    <li><a href="shop.html"><img src={ require("../Assets/images/icons/gray/food.png")} alt="" title="" /><span>Subcategory 05</span></a></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/car.png")} alt="" title="" /><span>Subcategory 01</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/bus.png")} alt="" title="" /><span>Subcategory 02</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/bike.png")} alt="" title="" /><span>Subcategory 03</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/drink.png")} alt="" title="" /><span>Subcategory 04</span></NavLink ></li>
+                                    <li><NavLink activeClassName="active" to="/shop"><img src={ require("../Assets/images/icons/gray/food.png")} alt="" title="" /><span>Subcategory 05</span></NavLink ></li>
 
 
                                 </ul>
@@ -84,4 +86,4 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+export default withRouter(Nav);
